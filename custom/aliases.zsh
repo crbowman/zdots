@@ -1,11 +1,25 @@
-#!/usr/bin/zsh
+
+alias ls='exa'
+alias la='exa -a'
+alias ll='exa -la'
+
+alias -g cat='bat'
 
 
-alias la='ls -a'
-alias ll='ls -la'
+alias -s txt=em
+alias -s py=em
+alias -s org=em
+
+
+
 
 alias em='emacsclient -nw'
-alias emacs='emacsclient -nc &'
 
-alias alias='emacsclient -nw $ZSH_CUSTOM/aliases.zsh'
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+alias python='python3'
+alias pip='pip3'
+
+alias path= "tr ':' '\n' <<< '$PATH'"
+
+alias editalias="emacsclient -nw /home/curtis/.config/zsh/custom/aliases.zsh"
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"

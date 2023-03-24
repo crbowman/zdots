@@ -77,6 +77,7 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
 export PATH=$HOME/bin:$XDG_CONFIG_HOME/emacs/bin:/usr/local/bin:$PATH
 export PATH="/home/curtis/config/roswell/bin:$PATH"
+export PATH="/home/curtis/.local/bin:$PATH"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
