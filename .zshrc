@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="em ~/.zshrc"
 alias ohmyzsh="em ~/.oh-my-zsh"
 
-
+# Configure vterm for use within emacs
 vterm_printf() {
     if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
         # Tell tmux to pass the escape sequences through
@@ -116,6 +116,10 @@ vterm_printf() {
         printf "\e]%s\e\\" "$1"
     fi
 }
+
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+    alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
