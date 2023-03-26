@@ -25,3 +25,4 @@ alias path= "tr ':' '\n' <<< '$PATH'"
 
 alias editalias="emacsclient -nw /home/curtis/.config/zsh/custom/aliases.zsh"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias catpath="printenv PATH | tr : n | cat"

@@ -11,8 +11,6 @@ fi
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#
-
  ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -20,7 +18,7 @@ fi
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
- HYPHEN_INSENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
@@ -40,7 +38,7 @@ fi
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+#E NABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -67,6 +65,7 @@ fi
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
+         z
          lein
          extract
          colored-man-pages
@@ -90,9 +89,7 @@ source $ZSH/oh-my-zsh.sh
    export EDITOR='emacs -nw'
  fi
 
-
  # dircolors
-
  eval `dircolors $XDG_CONFIG_HOME/dircolors/dircolors.ansi-dark`
 
 # Compilation flags
@@ -104,8 +101,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="em ~/.zshrc"
+alias ohmyzsh="em ~/.oh-my-zsh"
 
 
 vterm_printf() {
@@ -123,52 +120,53 @@ vterm_printf() {
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
 
+source /home/curtis/.config/broot/launcher/bash/br
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
-typeset -g -A key
+# typeset -g -A key
 
-key[Home]="${terminfo[khome]}"
-key[End]="${terminfo[kend]}"
-key[Insert]="${terminfo[kich1]}"
-key[Backspace]="${terminfo[kbs]}"
-key[Delete]="${terminfo[kdch1]}"
-key[Up]="${terminfo[kcuu1]}"
-key[Down]="${terminfo[kcud1]}"
-key[Left]="${terminfo[kcub1]}"
-key[Right]="${terminfo[kcuf1]}"
-key[PageUp]="${terminfo[kpp]}"
-key[PageDown]="${terminfo[knp]}"
-key[Shift-Tab]="${terminfo[kcbt]}"
+# key[Home]="${terminfo[khome]}"
+# key[End]="${terminfo[kend]}"
+# key[Insert]="${terminfo[kich1]}"
+# key[Backspace]="${terminfo[kbs]}"
+# key[Delete]="${terminfo[kdch1]}"
+# key[Up]="${terminfo[kcuu1]}"
+# key[Down]="${terminfo[kcud1]}"
+# key[Left]="${terminfo[kcub1]}"
+# key[Right]="${terminfo[kcuf1]}"
+# key[PageUp]="${terminfo[kpp]}"
+# key[PageDown]="${terminfo[knp]}"
+# key[Shift-Tab]="${terminfo[kcbt]}"
 
-# setup key accordingly
-[[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"       beginning-of-line
-[[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"        end-of-line
-[[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"     overwrite-mode
-[[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}"  backward-delete-char
-[[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"     delete-char
-[[ -n "${key[Up]}"        ]] && bindkey -- "${key[Up]}"         up-line-or-history
-[[ -n "${key[Down]}"      ]] && bindkey -- "${key[Down]}"       down-line-or-history
-[[ -n "${key[Left]}"      ]] && bindkey -- "${key[Left]}"       backward-char
-[[ -n "${key[Right]}"     ]] && bindkey -- "${key[Right]}"      forward-char
-[[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
-[[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
-[[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
+# # setup key accordingly
+# [[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"       beginning-of-line
+# [[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"        end-of-line
+# [[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"     overwrite-mode
+# [[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}"  backward-delete-char
+# [[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"     delete-char
+# [[ -n "${key[Up]}"        ]] && bindkey -- "${key[Up]}"         up-line-or-history
+# [[ -n "${key[Down]}"      ]] && bindkey -- "${key[Down]}"       down-line-or-history
+# [[ -n "${key[Left]}"      ]] && bindkey -- "${key[Left]}"       backward-char
+# [[ -n "${key[Right]}"     ]] && bindkey -- "${key[Right]}"      forward-char
+# [[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
+# [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
+# [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
 
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
-fi
+# # Finally, make sure the terminal is in application mode, when zle is
+# # active. Only then are the values from $terminfo valid.
+# if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+# 	autoload -Uz add-zle-hook-widget
+# 	function zle_application_mode_start { echoti smkx }
+# 	function zle_application_mode_stop { echoti rmkx }
+# 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+# 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+# fi
 
 
-# Modifier keys
-key[Control-Left]="${terminfo[kLFT5]}"
-key[Control-Right]="${terminfo[kRIT5]}"
+# # Modifier keys
+# key[Control-Left]="${terminfo[kLFT5]}"
+# key[Control-Right]="${terminfo[kRIT5]}"
 
-[[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
-[[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
+# [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
+# [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word

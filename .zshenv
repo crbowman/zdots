@@ -19,6 +19,10 @@ if [ -f "/home/curtis/.local/share/antidot/alias.sh" ]; then source "/home/curti
 # export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 # nvidia-settings --config="$XDG_CONFIG_HOME/nvidia/settings"
 # export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+#
+#
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
 
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
@@ -42,8 +46,11 @@ export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
-export ROSWELL_HOME="$XDG_CONFIG_HOME/roswell"
-export SBCL_HOME="$XDG_CONFIG_HOME/roswell/impls/x86_64/linux/sbcl-bin/2.3.2/lib/sbcl"
+
+# export ROSWELL_HOME=""
+#"$XDG_CONFIG_HOME/roswell"
+export SBCL_HOME="/usr/local/lib/sbcl"
+# export SBCL_HOME="$XDG_CONFIG_HOME/roswell/impls/x86_64/linux/sbcl-bin/2.3.2/lib/sbcl"
 export ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export GNUPGPHOME="$XDG_DATA_HOME/gnupgp"
@@ -66,7 +73,7 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
 export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
 export PATH=$HOME/bin:$XDG_CONFIG_HOME/emacs/bin:/usr/local/bin:$PATH
-export PATH="/home/curtis/.config/roswell/bin:$PATH"
+#export PATH="/home/curtis/.config/roswell/bin:$PATH"
 export PATH="/home/curtis/.local/bin:$PATH"
 
 
